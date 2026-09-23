@@ -1,0 +1,28 @@
+{
+  "name": "ios-camera-spike",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Banco de provas de captura de foto com recorte 1:1 em PWA no Safari/iOS.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --host",
+    "dev:tunel": "vite --host --mode tunel",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host",
+    "typecheck": "tsc -b --force"
+  },
+  "dependencies": {
+    "dexie": "^4.0.11",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-basic-ssl": "^2.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  }
+}

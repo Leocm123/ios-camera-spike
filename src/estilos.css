@@ -1,0 +1,285 @@
+:root {
+  color-scheme: dark;
+  --fundo: #0e1013;
+  --superficie: #171a1f;
+  --borda: #2a2f37;
+  --texto: #e8eaed;
+  --apagado: #9aa2ad;
+  --acento: #4aa3ff;
+  --ok: #4ade80;
+  --alerta: #fbbf24;
+  --erro: #f87171;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+}
+
+main {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 16px 16px 64px;
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0 0 4px;
+}
+
+h2 {
+  font-size: 16px;
+  margin: 0 0 12px;
+}
+
+h3 {
+  font-size: 14px;
+  margin: 0 0 8px;
+  color: var(--apagado);
+  font-weight: 600;
+}
+
+.subtitulo {
+  color: var(--apagado);
+  font-size: 13px;
+  margin: 0 0 20px;
+}
+
+section {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+button {
+  font: inherit;
+  font-weight: 600;
+  color: #061019;
+  background: var(--acento);
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  width: 100%;
+  cursor: pointer;
+}
+
+button.secundario {
+  background: transparent;
+  color: var(--texto);
+  border: 1px solid var(--borda);
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+.botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label.arquivo {
+  display: block;
+}
+
+label.arquivo input {
+  display: none;
+}
+
+label.arquivo span {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  color: #061019;
+  background: var(--acento);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+dl.dados {
+  display: grid;
+  grid-template-columns: minmax(0, 40%) minmax(0, 60%);
+  gap: 4px 12px;
+  margin: 0;
+  font-size: 13px;
+}
+
+dl.dados dt {
+  color: var(--apagado);
+}
+
+dl.dados dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+
+.sim {
+  color: var(--ok);
+}
+.nao {
+  color: var(--erro);
+}
+.aviso {
+  color: var(--alerta);
+}
+
+.formatos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* No celular a prévia empilha, para "ampliada" ser de fato ampliada. */
+@media (max-width: 460px) {
+  .formatos {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.formato img.ampliada {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #000;
+  display: block;
+}
+
+.bolinha {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  background: #000;
+  border: 1px solid var(--borda);
+}
+
+.linha-bolinha {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.linha-bolinha span {
+  font-size: 12px;
+  color: var(--apagado);
+}
+
+.bytes {
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  margin: 8px 0 0;
+}
+
+.mime {
+  font-size: 12px;
+  color: var(--apagado);
+  margin: 2px 0 0;
+}
+
+pre {
+  background: #0a0c0f;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 11px;
+  line-height: 1.45;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 0 0 8px;
+}
+
+.erro-bloco {
+  border-color: #5b2222;
+  background: #1a0f0f;
+}
+
+.moldura-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #000;
+  margin-bottom: 12px;
+}
+
+.moldura-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.moldura-video .guia {
+  position: absolute;
+  inset: 0;
+  border: 2px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.salvas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.salva {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-top: 1px solid var(--borda);
+  padding-top: 12px;
+}
+
+.salva:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.salva div {
+  font-size: 12px;
+  color: var(--apagado);
+  min-width: 0;
+}
+
+.salva strong {
+  color: var(--texto);
+  font-size: 13px;
+  display: block;
+}
+
+.controle-rotacao {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.controle-rotacao button {
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.controle-rotacao button[aria-pressed='true'] {
+  background: var(--acento);
+  color: #061019;
+  border-color: var(--acento);
+}
