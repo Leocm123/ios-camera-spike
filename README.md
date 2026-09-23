@@ -5,13 +5,13 @@ quadrada dentro de uma PWA no Safari do iPhone: as duas rotas de câmera, o
 recorte 1:1 no ato da captura, a orientação EXIF, a compressão e a persistência
 do resultado em IndexedDB.
 
-Nasceu como spike de decisão de um projeto meu — eu precisava saber se uma PWA
+Nasceu como spike de decisão de um projeto meu, eu precisava saber se uma PWA
 dava conta da câmera no iOS antes de escrever qualquer linha do app. Deu, mas o
 caminho até lá rendeu uma lista de comportamentos que quase não aparecem
 documentados, e é por isso que o repo existe separado.
 
 **O princípio da página:** nada de `console.log`. Com um iPhone na mão e nenhum
-Mac ao lado, o console é invisível — então toda falha, inclusive `window.onerror`
+Mac ao lado, o console é invisível, então toda falha, inclusive `window.onerror`
 e `unhandledrejection`, é renderizada crua na tela, com `name`, `message`,
 `stack` e as propriedades próprias do objeto.
 
@@ -26,7 +26,7 @@ diverge, está dito.
 ### 1. `canvas.toBlob('image/webp')` devolve PNG, sem avisar
 
 O achado mais importante, porque falha em silêncio: o `toBlob` chama o callback
-com um Blob perfeitamente válido — só que `image/png`. Não há exceção, não há
+com um Blob perfeitamente válido, só que `image/png`. Não há exceção, não há
 `null`, não há aviso. Quem confiar no tipo que pediu sobe PNG de fotografia
 achando que é WebP:
 
@@ -53,7 +53,7 @@ leitura.
 
 Para exercitar o fallback de propósito, abra a página com `?falharBlob=1`.
 
-### 3. O Safari do iOS já aplica a rotação EXIF — aplicar de novo deita a foto
+### 3. O Safari do iOS já aplica a rotação EXIF, aplicar de novo deita a foto
 
 Uma foto de iPhone em retrato chega com `Orientation = 6`, mas
 `createImageBitmap(file, { imageOrientation: 'from-image' })` **já devolve o
@@ -92,7 +92,7 @@ exista. O `vite.config.ts` daqui já libera os domínios de túnel comuns.
 ### 6. Qualidade de JPEG: 0,60 resolve
 
 Comparando q0,82 e q0,60 na mesma foto, no device: **32% mais leve, com
-diferença visual quase imperceptível** — tanto na foto ampliada quanto na
+diferença visual quase imperceptível**, tanto na foto ampliada quanto na
 miniatura circular de 56px. A página mostra as duas lado a lado justamente para
 você conferir com a sua foto, no seu aparelho.
 
@@ -104,10 +104,10 @@ ocupa cerca de 1320px físicos.
 ## Rodar
 
 A câmera exige *secure context*. No iPhone o host é a sua máquina, não
-`localhost`, então `http://192.168.x.x:5173` **não serve** — `getUserMedia`
+`localhost`, então `http://192.168.x.x:5173` **não serve**, `getUserMedia`
 simplesmente não aparece em `navigator.mediaDevices`.
 
-### Opção 1 — túnel com certificado confiável (recomendada)
+### Opção 1 - túnel com certificado confiável (recomendada)
 
 Atrás de um túnel, quem faz o HTTPS é o túnel. O modo `tunel` serve HTTP puro e
 libera os domínios de túnel em `allowedHosts`.
@@ -139,7 +139,7 @@ vez de hosts. Para outro serviço, acrescente em `DOMINIOS_DE_TUNEL` no
 
 Equivalentes: `ngrok http 5273` (exige conta) ou `tailscale funnel 5273`.
 
-### Opção 2 — LAN direto, com certificado autoassinado
+### Opção 2 - LAN direto, com certificado autoassinado
 
 ```bash
 npm run dev            # HTTPS na 5273
